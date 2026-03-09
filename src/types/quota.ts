@@ -281,3 +281,47 @@ export interface KimiQuotaState {
   error?: string;
   errorStatus?: number;
 }
+
+// GitHub Copilot API payload types
+export interface CopilotQuotaDetail {
+  entitlement?: number;
+  overage_count?: number;
+  overage_permitted?: boolean;
+  percent_remaining?: number;
+  quota_id?: string;
+  quota_remaining?: number;
+  remaining?: number;
+  unlimited?: boolean;
+}
+
+export interface CopilotQuotaSnapshots {
+  chat?: CopilotQuotaDetail;
+  completions?: CopilotQuotaDetail;
+  premium_interactions?: CopilotQuotaDetail;
+}
+
+export interface CopilotUsagePayload {
+  access_type_sku?: string;
+  copilot_plan?: string;
+  quota_reset_date?: string;
+  quota_snapshots?: CopilotQuotaSnapshots;
+}
+
+export interface CopilotQuotaRow {
+  id: string;
+  label: string;
+  labelKey?: string;
+  used: number;
+  limit: number;
+  percentRemaining: number | null;
+  unlimited: boolean;
+}
+
+export interface CopilotQuotaState {
+  status: 'idle' | 'loading' | 'success' | 'error';
+  rows: CopilotQuotaRow[];
+  planType?: string | null;
+  resetDate?: string | null;
+  error?: string;
+  errorStatus?: number;
+}

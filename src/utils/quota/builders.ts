@@ -7,6 +7,9 @@ import type {
   AntigravityQuotaGroupDefinition,
   AntigravityQuotaInfo,
   AntigravityModelsPayload,
+  CopilotQuotaDetail,
+  CopilotQuotaRow,
+  CopilotUsagePayload,
   GeminiCliParsedBucket,
   GeminiCliQuotaBucketState,
   KimiUsagePayload,
@@ -402,6 +405,63 @@ export function buildKimiQuotaRows(payload: KimiUsagePayload): KimiQuotaRow[] {
       }
     });
   }
+
+  return rows;
+}
+
+function toCopilotQuotaRow(
+  id: string,
+  label: string,
+  labelKey: string,
+  detail?: CopilotQuotaDetail
+): CopilotQuotaRow | null {
+  if (!detail) return null;
+  const entitlement = typeof detail.entitlement === 'number' ? detail.entitlement : 0;
+  const remaining = typeof detail.remaining === 'number' ? detail.remaining : 0;
+  const used = entitlement - remaining;
+  const percentRemaining =
+    typeof detail.percent_remaining === 'number' ? detail.percent_remaining : null;
+  const unlimited = detail.unlimited === true;
+
+  return {
+    id,
+    label,
+    labelKey,
+    used: Math.max(0, used),
+    limit: entitlement,
+    percentRemaining,
+    unlimited,
+  };
+}
+
+export function buildCopilotQuotaRows(payload: CopilotUsagePayload): CopilotQuotaRow[] {
+  const rows: CopilotQuotaRow[] = [];
+  const snapshots = payload.quota_snapshots;
+  if (!snapshots || typeof snapshots !== 'object') return rows;
+
+  const premium = toCopilotQuotaRow(
+    'premium',
+    'Premium Requests',
+    'copilot_quota.premium_interactions',
+    snapshots.premium_interactions
+  );
+  if (premium) rows.push(premium);
+
+  const chat = toCopilotQuotaRow(
+    'chat',
+    'Chat',
+    'copilot_quota.chat',
+    snapshots.chat
+  );
+  if (chat) rows.push(chat);
+
+  const completions = toCopilotQuotaRow(
+    'completions',
+    'Completions',
+    'copilot_quota.completions',
+    snapshots.completions
+  );
+  if (completions) rows.push(completions);
 
   return rows;
 }

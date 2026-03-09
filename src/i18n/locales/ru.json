@@ -1436,5 +1436,23 @@
     "build_date": "Время сборки",
     "version": "Версия интерфейса управления",
     "author": "Автор"
+  },
+  "copilot_quota": {
+    "title": "Квота GitHub Copilot",
+    "empty_title": "Файлы авторизации Copilot отсутствуют",
+    "empty_desc": "Загрузите учётные данные GitHub Copilot, чтобы увидеть оставшуюся квоту.",
+    "idle": "Не загружено. Нажмите \"Обновить квоту\".",
+    "loading": "Загрузка квоты...",
+    "load_failed": "Не удалось загрузить квоту: {{message}}",
+    "missing_auth_index": "В файле авторизации отсутствует auth_index",
+    "empty_data": "Данные по квоте отсутствуют",
+    "refresh_button": "Обновить квоту",
+    "fetch_all": "Получить все",
+    "plan_label": "Тариф",
+    "reset_date_label": "Сброс квоты",
+    "premium_interactions": "Премиум-запросы",
+    "chat": "Чат",
+    "completions": "Дополнения",
+    "unlimited": "Безлимитно"
   }
 }

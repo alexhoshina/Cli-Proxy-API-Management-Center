@@ -34,6 +34,14 @@ export const TYPE_COLORS: Record<string, TypeColorSet> = {
     light: { bg: '#fff3e0', text: '#ef6c00' },
     dark: { bg: '#e65100', text: '#ffb74d' },
   },
+  copilot: {
+    light: { bg: '#e8f0fe', text: '#1a73e8' },
+    dark: { bg: '#1a3a5c', text: '#8ab4f8' },
+  },
+  'github-copilot': {
+    light: { bg: '#e8f0fe', text: '#1a73e8' },
+    dark: { bg: '#1a3a5c', text: '#8ab4f8' },
+  },
   kimi: {
     light: { bg: '#fff4e5', text: '#ad6800' },
     dark: { bg: '#7c4a03', text: '#ffd591' },
@@ -190,4 +198,12 @@ export const KIMI_USAGE_URL = 'https://api.kimi.com/coding/v1/usages';
 
 export const KIMI_REQUEST_HEADERS = {
   Authorization: 'Bearer $TOKEN$',
+};
+
+// GitHub Copilot API configuration
+export const COPILOT_USAGE_URL = 'https://api.github.com/copilot_internal/user';
+
+export const COPILOT_REQUEST_HEADERS = {
+  Authorization: 'token $TOKEN$',
+  Accept: 'application/json',
 };

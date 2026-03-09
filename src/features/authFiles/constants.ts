@@ -12,12 +12,14 @@ export type TypeColorSet = { light: ThemeColors; dark?: ThemeColors };
 export type ResolvedTheme = 'light' | 'dark';
 export type AuthFileModelItem = { id: string; display_name?: string; type?: string; owned_by?: string };
 
-export type QuotaProviderType = 'antigravity' | 'claude' | 'codex' | 'gemini-cli' | 'kimi';
+export type QuotaProviderType = 'antigravity' | 'claude' | 'codex' | 'copilot' | 'github-copilot' | 'gemini-cli' | 'kimi';
 
 export const QUOTA_PROVIDER_TYPES = new Set<QuotaProviderType>([
   'antigravity',
   'claude',
   'codex',
+  'copilot',
+  'github-copilot',
   'gemini-cli',
   'kimi'
 ]);
@@ -59,6 +61,14 @@ export const TYPE_COLORS: Record<string, TypeColorSet> = {
   codex: {
     light: { bg: '#fff3e0', text: '#ef6c00' },
     dark: { bg: '#e65100', text: '#ffb74d' }
+  },
+  copilot: {
+    light: { bg: '#e8f0fe', text: '#1a73e8' },
+    dark: { bg: '#1a3a5c', text: '#8ab4f8' }
+  },
+  'github-copilot': {
+    light: { bg: '#e8f0fe', text: '#1a73e8' },
+    dark: { bg: '#1a3a5c', text: '#8ab4f8' }
   },
   antigravity: {
     light: { bg: '#e0f7fa', text: '#006064' },

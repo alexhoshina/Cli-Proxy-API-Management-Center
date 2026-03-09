@@ -1431,5 +1431,23 @@
     "build_date": "Build Time",
     "version": "Management UI Version",
     "author": "Author"
+  },
+  "copilot_quota": {
+    "title": "GitHub Copilot Quota",
+    "empty_title": "No Copilot Auth Files",
+    "empty_desc": "Upload a GitHub Copilot credential to view remaining quota.",
+    "idle": "Click here to refresh quota",
+    "loading": "Loading quota...",
+    "load_failed": "Failed to load quota: {{message}}",
+    "missing_auth_index": "Auth file missing auth_index",
+    "empty_data": "No quota data available",
+    "refresh_button": "Refresh Quota",
+    "fetch_all": "Fetch All",
+    "plan_label": "Plan",
+    "reset_date_label": "Quota Resets",
+    "premium_interactions": "Premium Requests",
+    "chat": "Chat",
+    "completions": "Completions",
+    "unlimited": "Unlimited"
   }
 }
